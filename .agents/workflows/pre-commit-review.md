@@ -59,6 +59,15 @@ If relevant skills are active (e.g., `hexagonal-pragmatic-architecture`, `solid-
 - **Code Smells**: Identify deeply nested logic, magic numbers/strings, overly large functions, or duplicated logic blocks.
 - **Test Coverage**: If production code was changed, check if corresponding test files were also modified. If not, flag it as a warning.
 
+- **Naming Analysis** (`naming-analyzer` skill): Apply the naming analyzer to all changed files and flag:
+  - 🔴 **Misleading names** — function/method name doesn't match its actual behavior (e.g., a `get*` function that also writes to DB).
+  - 🟡 **Vague or generic names** — `data`, `info`, `temp`, `process`, `x`, single-letter variables outside loops.
+  - 🟡 **Boolean naming** — booleans missing `is`, `has`, `can`, or `should` prefix (e.g., `user.active` → `user.isActive`).
+  - 🟡 **Unexplained abbreviations** — names that obscure meaning (e.g., `usrCfg`, `calcTtl`). Well-known exceptions (`id`, `url`, `api`, `html`) are acceptable.
+  - 🟡 **Magic numbers/strings** — raw literals that should be named constants (e.g., `3600000` → `ONE_HOUR_IN_MS`).
+  - 🟡 **Convention inconsistencies** — mixing `camelCase` and `snake_case` within the same language context.
+
+
 ### Step 5: Generate the Review Report
 Present a structured Markdown report with these sections:
 
